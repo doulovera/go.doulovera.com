@@ -87,7 +87,7 @@ export const homepage = (list: string[] = []): string => `
           body: JSON.stringify(data)
         })
           .then((res) => {
-            $result.innerText = res.ok ? 'Enlace creado' : json.error
+            $result.innerText = res.ok ? '✅ Enlace creado' : '❌ Hubo un error'
           })
       })
     </script>
