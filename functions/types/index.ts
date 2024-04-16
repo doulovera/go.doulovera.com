@@ -1,9 +1,10 @@
 import type { Context } from "hono"
 
-export type WranglerEnv = {}
-
 export type HonoContext = {
-  Bindings: WranglerEnv
+  Bindings: {
+    URLS: KVNamespace
+    AUTH: string
+  }
 }
 
 export type GoCtx = Context<HonoContext>

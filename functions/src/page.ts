@@ -1,4 +1,4 @@
-export const homepage = `
+export const homepage = (list: string[] = []): string =>`
 <!DOCTYPE html>
 <html>
   <head>
@@ -10,6 +10,19 @@ export const homepage = `
         padding: 0;
         background-color: #222436;
         color: #f0f0f0;
+      }
+
+      a {
+        color: #f0f0f0;
+        text-decoration: none;
+      }
+
+      ul {
+        font-weight: bold;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+        list-style: none;
       }
       
       .content {
@@ -26,6 +39,12 @@ export const homepage = `
     <div class="content">
       <h1>Homepage</h1>
       <p>Usage: /:name</p>
+
+      <br />
+
+      <ul>
+        ${list.map((item) => `<li><a href="/${item}">${item}</a></li>`).join('')}
+      </ul>
     </div>
   </body>
 </html>
