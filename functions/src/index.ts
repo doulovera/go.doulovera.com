@@ -2,8 +2,13 @@ import type { HonoContext } from '../types'
 
 import { Hono } from 'hono'
 import { LIST } from './list'
+import { homepage } from './page'
 
 const app = new Hono<HonoContext>()
+
+app.get('/', (c) => {
+  return c.html(homepage)
+})
 
 app.get('/:name', (c) => {
   const name = c.req.param('name')  

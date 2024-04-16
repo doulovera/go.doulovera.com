@@ -5,8 +5,8 @@ compatibility_date = "2023-12-01"
 # MY_VAR = "my-variable"
 
 # [[kv_namespaces]]
-# binding = "MY_KV_NAMESPACE"
-# id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+binding = "go-urls"
+id = "b35336c4dec1497eb6e8f3ce34dea4f0"
 
 # [[r2_buckets]]
 # binding = "MY_BUCKET"
