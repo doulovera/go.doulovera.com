@@ -21,7 +21,10 @@ app.post('/', async (c) => {
     return c.json({ success: false, error: "Invalid request" }, 400)
   }
 
-  await c.env.URLS.put(param.name, param.url)
+  const alias = param.name.toLowerCase()
+  const destination = param.url.startsWith('http') ? param.url : `https://${param.url}`
+
+  await c.env.URLS.put(alias, destination)
 
   return c.json({ success: true }, 200)
 })
@@ -35,9 +38,7 @@ app.get('/:name', async (c) => {
     return c.text("Not found", 404)
   }
 
-  const destination = url.startsWith('http') ? url : `https://${url}`
-
-  return c.redirect(destination)
+  return c.redirect(url)
 })
 
 export default app

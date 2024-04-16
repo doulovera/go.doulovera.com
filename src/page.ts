@@ -5,23 +5,36 @@ export const homepage = (list: string[] = []): string => `
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>midu.link - ⚡🔗 Short your urls</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <title>⚡🔗 Short urls</title>
 
     <style>
-      body {
-        font-family: Arial, sans-serif;
+      * {
         margin: 0;
         padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         background-color: #222436;
         color: #f0f0f0;
       }
-
-      a {
+      
+      .content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+        height: 100vh;
+        width: 100vw;
+      }
+      
+      h1, a {
         color: #f0f0f0;
         text-decoration: none;
       }
-
+      
       ul {
         font-weight: bold;
         text-align: center;
@@ -30,15 +43,38 @@ export const homepage = (list: string[] = []): string => `
         list-style: none;
       }
       
-      .content {
+      form {
         display: flex;
-        justify-content: center;
-        align-items: center;
         flex-direction: column;
-        height: 100vh;
-        width: 100vw;
+        gap: 10px;
+        max-width: 240px;
+        width: 100%;
+        background-color: #3d4270;
+        padding: 20px;
+        border-radius: 8px;
+      }
+      
+      input {
+        border-radius: 6px;
+        padding: 10px 6px;
+        border: 0;
+      }
+      
+      button {
+        margin-top: 20px;
+        padding: 10px;
+        border-radius: 6px;
+        border: 0;
+        background-color: #222436;
+        color: #f0f0f0;
+        cursor: pointer;
+      }
+      
+      button:hover {
+        opacity: 0.8;
       }
     </style>
+
   </head>
   <body>
     <main class="content">
@@ -46,8 +82,8 @@ export const homepage = (list: string[] = []): string => `
       <p>Usage: /:name</p>
 
       <form>
-        <input name="name" type="text" "Alias del enlace" />
-        <input name="url" type="text" "enlace" />
+        <input name="name" type="text" placeholder="Alias del enlace" />
+        <input name="url" type="text" placeholder="https://..." />
         <input name="password" type="password" placeholder="Contraseña..." />
 
         <button type="submit">
