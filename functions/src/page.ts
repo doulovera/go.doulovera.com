@@ -1,8 +1,13 @@
-export const homepage = (list: string[] = []): string =>`
+export const homepage = (list: string[] = []): string => `
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Homepage</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>midu.link - ⚡🔗 Short your urls</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -36,16 +41,57 @@ export const homepage = (list: string[] = []): string =>`
     </style>
   </head>
   <body>
-    <div class="content">
+    <main class="content">
       <h1>Homepage</h1>
       <p>Usage: /:name</p>
+
+      <form>
+        <input name="name" type="text" "Alias del enlace" />
+        <input name="url" type="text" "enlace" />
+        <input name="password" type="password" placeholder="Contraseña..." />
+
+        <button type="submit">
+          Crear enlace
+        </button>
+      </form>
+
+      <div id="result"></div>
 
       <br />
 
       <ul>
         ${list.map((item) => `<li><a href="/${item}">${item}</a></li>`).join('')}
       </ul>
-    </div>
+    </main>
+
+    <script>
+      const $ = (el) => document.querySelector(el)
+
+      const $form = $('form')
+      const $result = $('#result')
+
+      $form.addEventListener('submit', (event) => {
+        event.preventDefault()
+
+        const data = {
+          name: $form.name.value,
+          url: $form.url.value,
+          auth: $form.password.value
+        }
+
+        fetch('/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        })
+          .then((res) => {
+            $result.innerText = res.ok ? 'Enlace creado' : json.error
+          })
+      })
+    </script>
+
   </body>
 </html>
 `
